@@ -19,3 +19,8 @@ ul {
   list-style: none;
   padding: 0;
 }
+
+.main-bg {
+  height: 300px;
+  background: url(/bg-300x300.png) center;
+}
