@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import './App.css'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import data from './data.js';
 // import Home from './home';
 import Product from './product';
-import Detail from './detail';
+import Detail from './routes/detail';
+import Event from './routes/event';
+import One from './routes/one';
+import Two from './routes/two';
 
 function App() {
 
@@ -18,8 +21,9 @@ function App() {
           <Container>
             <Navbar.Brand href="#home">ShoeShop</Navbar.Brand>
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#features">Features</Nav.Link>
+              {/* useNavigate 사용하여 이동 */}
+              {/* <Nav.Link onClick={() => { navigate('/') }}>Home</Nav.Link>
+              <Nav.Link onClick={() => { navigate('/detail') }}>Detail</Nav.Link> */}
             </Nav>
           </Container>
         </Navbar>
@@ -41,7 +45,15 @@ function App() {
               </div>
             </div>
           </>} />
-          <Route path="/detail" element={<Detail />} />
+          <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
+
+          {/* detail/아무거나 라는 뜻 */}
+          {/* path="*" route 설정된 경로 외에 모든 페이지 */}
+          {/* <Route path="*" element={<h2>없는 페이지입니다</h2>} /> */}
+          <Route path="/event" element={<Event />} >
+            <Route path="one" element={<One />} />
+            <Route path="two" element={<Two />} />
+          </Route>
         </Routes>
       </>
     </div>

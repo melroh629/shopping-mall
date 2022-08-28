@@ -1,0 +1,6 @@
+useNavigate
+- 리액트 훅
+- 페이지 이동을 도와주는 함수가 있음
+
+<Route path="/detail/:id" element={<Detail />} />
+id 부분이 url 파라미터
