@@ -48,12 +48,11 @@ function App() {
           <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
 
           {/* detail/아무거나 라는 뜻 */}
-          {/* path="*" route 설정된 경로 외에 모든 페이지 */}
-          {/* <Route path="*" element={<h2>없는 페이지입니다</h2>} /> */}
           <Route path="/event" element={<Event />} >
             <Route path="one" element={<One />} />
             <Route path="two" element={<Two />} />
           </Route>
+          <Route path="*" element={<h2>없는 페이지입니다</h2>} />
         </Routes>
       </>
     </div>

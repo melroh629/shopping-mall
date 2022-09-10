@@ -4,3 +4,18 @@ useNavigate
 
 <Route path="/detail/:id" element={<Detail />} />
 id 부분이 url 파라미터
+id 부분은 마음대로 작명 가능
+useParams: 유저가 URL 파라미터에 입력한거 가져올 때 사용
+
+- 404 패이지 만들기
+<Route path="*" route 설정된 경로 외에 모든 페이지 />
+
+nested routed
+- 라우트 안에 라우트를 넣을 수 있음
+Outlet
+- 라우트 안에 라우트를 넣을 때 사용하는 컴포넌트
+
+find()
+- 배열에서 특정 조건을 만족하는 요소를 찾아서 반환
+- 조건을 만족하는 요소가 없으면 undefined 반환
+- array자료.find(()=>{return 조건식})
