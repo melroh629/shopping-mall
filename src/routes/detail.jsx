@@ -1,11 +1,20 @@
 import React from "react";
+import styled   from "styled-components";
 import { useParams } from "react-router-dom";
 const  Detail = (props) => {
     const { id } = useParams();
     const 찾는상품 = props.shoes.find(function (x) {
         return x.id == id;
     })
-    console.log(props)
+
+    const Button = styled.button`
+      border-radius: 5px;
+      padding: 10px;
+      background-color: ${props => props.bg};
+      color: ${props => props.bg === '#7171e2' ? 'black' : 'white'};
+      margin-top: 10px;
+      margin-right: 10px;
+    `
     return (
         <>
             <div className="container">
@@ -17,7 +26,8 @@ const  Detail = (props) => {
                         <h4 className="pt-5">{props.shoes[id].title}</h4>
                         <p>{props.shoes[id].content}</p>
                         <p>{props.shoes[id].price}</p>
-                        <button className="btn btn-danger">주문하기</button>
+                        <Button bg="#7171e2">장바구니</Button>
+                        <Button bg="#ee0d41">주문하기</Button>
                     </div>
                 </div>
             </div>
