@@ -3,12 +3,8 @@ import './App.css'
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import data from './data.js';
-// import Home from './home';
-import Product from './product';
-import Detail from './routes/detail';
-import Event from './routes/event';
-import One from './routes/one';
-import Two from './routes/two';
+import axios from "axios";
+
 
 function App() {
 
@@ -54,6 +50,8 @@ function App() {
           </Route>
           <Route path="*" element={<h2>없는 페이지입니다</h2>} />
         </Routes>
+
+        <button>더보기</button>
       </>
     </div>
   )
