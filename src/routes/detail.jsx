@@ -7,11 +7,15 @@ const  Detail = (props) => {
         return x.id == id;
     })
 
-    const [alert, setAlert] = useState(true);
+    const [banner, setBanner] = useState(true);
+    const [numbers, setNumbers] = useState('');
     useEffect(() => {
         const timer = setTimeout(()=>{
-            setAlert(false);
+            setBanner(false);
         }, 2000);
+        if(isNaN(numbers) === true){
+            alert('숫자만 입력해주세요');
+        }
 
     })
 
@@ -27,7 +31,7 @@ const  Detail = (props) => {
         <>
             <div className="container">
                 {
-                    alert === true && (
+                    banner === true && (
                         <div style={{padding: "20px", fontSize:"20px", backgroundColor: "lightblue"}}>alert</div>
                     )
                 }
@@ -42,6 +46,11 @@ const  Detail = (props) => {
                         <Button bg="#7171e2">장바구니</Button>
                         <Button bg="#ee0d41">주문하기</Button>
                     </div>
+                    <input placeholder="only numbers" style={{padding: "20px", width: "50%", margin: "0 auto", backgroundColor: "#f9f9f9"}}
+                       onChange={(e)=>{
+                           setNumbers(e.target.value);
+                       }}/>
+                    <p>numbers only</p>
                 </div>
             </div>
         </>
