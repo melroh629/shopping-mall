@@ -1,10 +1,18 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styled   from "styled-components";
 import { useParams } from "react-router-dom";
 const  Detail = (props) => {
     const { id } = useParams();
     const 찾는상품 = props.shoes.find(function (x) {
         return x.id == id;
+    })
+
+    const [alert, setAlert] = useState(true);
+    useEffect(() => {
+        const timer = setTimeout(()=>{
+            setAlert(false);
+        }, 2000);
+
     })
 
     const Button = styled.button`
@@ -18,6 +26,11 @@ const  Detail = (props) => {
     return (
         <>
             <div className="container">
+                {
+                    alert === true && (
+                        <div style={{padding: "20px", fontSize:"20px", backgroundColor: "lightblue"}}>alert</div>
+                    )
+                }
                 <div className="row">
                     <div className="col-md-6">
                         <img src={'https://codingapple1.github.io/shop/shoes' + props.shoes[id].id + '.jpg'} width="100%" />
