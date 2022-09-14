@@ -3,13 +3,19 @@ import './App.css'
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import data from './data.js';
+// import Home from './home';
+import Product from './product';
+import Detail from './routes/detail';
+import Event from './routes/event';
+import One from './routes/one';
+import Two from './routes/two';
 import axios from "axios";
 
 
 function App() {
 
-  const [shoes, shoeState] = useState(data)
-
+  const [shoes, setShoe] = useState(data)
+  const [count, setCount] = useState(2)
   return (
     <div className="App">
       <>
@@ -50,8 +56,27 @@ function App() {
           </Route>
           <Route path="*" element={<h2>없는 페이지입니다</h2>} />
         </Routes>
+        <p style={{display:"none"}}>
+          1. 버튼 2회 누르면  7,8,9 번째 상품도 가져오기<br/>
+          2. 버튼 3회 누르면 상품 더 없다고 알려주기<br/>
+          3. 버튼 누르면 '로딩중입니다' 글자 띄우기<br/>
+        </p>
+        <button onClick={()=>{
+          const url = `https://codingapple1.github.io/shop/data${count}.json`;
+          console.log(url)
+          axios.get(url)
 
-        <button>더보기</button>
+              .then((result)=>{
+                const copyShoes = [...shoes, ...result.data];
+                setShoe(copyShoes)
+              })
+              .catch(()=>{
+                alert('server error')
+              })
+          setCount(count+1);
+          console.log(count);
+        }}>더보기</button>
+
       </>
     </div>
   )
