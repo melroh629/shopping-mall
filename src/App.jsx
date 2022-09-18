@@ -10,6 +10,7 @@ import Event from './routes/event';
 import One from './routes/one';
 import Two from './routes/two';
 import axios from "axios";
+import Cart from "./routes/cart.jsx";
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
             </div>
           </>} />
           <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
+          <Route path="/cart" element={<Cart />}/>
 
           {/* detail/아무거나 라는 뜻 */}
           <Route path="/event" element={<Event />} >

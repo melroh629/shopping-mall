@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import styled   from "styled-components";
 import { useParams } from "react-router-dom";
+
 const  Detail = (props) => {
     const { id } = useParams();
     const 찾는상품 = props.shoes.find(function (x) {
@@ -27,6 +28,7 @@ const  Detail = (props) => {
       margin-top: 10px;
       margin-right: 10px;
     `
+    const [tab, setTab] = useState(0);
     return (
         <>
             <div className="container">
@@ -52,6 +54,8 @@ const  Detail = (props) => {
                        }}/>
                     <p>numbers only</p>
                 </div>
+
+
             </div>
         </>
     )
