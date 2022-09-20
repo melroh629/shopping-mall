@@ -44,3 +44,10 @@ useEffect 사용예시
 
 
 서버와 요청
+
+redux 왜씀?
+- 컴포넌트간 state 공유 편해짐
+
+Redux의 state 변경하는 법
+1. state 수정해주는 함수 만들고
+2. 원할 때 그 함수 실행해달라고 store.js에 요청
