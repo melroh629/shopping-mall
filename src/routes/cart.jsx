@@ -1,18 +1,21 @@
 import React, { useState} from "react";
 import styled   from "styled-components";
 import {Table} from "react-bootstrap";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {addStock, changeName} from "../store.js";
 
 
 const  Cart = (props) => {
     //store안에 있던 모든 sate를 가져오는 것
-    //state.user로 하면 user state만 가져옴
-    const cartState = useSelector((state)=>{
+    let cartState = useSelector((state)=>{
         return state
-    })
+    });
+    //dispatch : store한테 요청을 보내주는 함수
+    let dispatch = useDispatch();
 
     return (
         <>
+            <p>{cartState.user}의 장바구니</p>
             <Table>
                 <thead>
                 <tr>
@@ -24,12 +27,16 @@ const  Cart = (props) => {
                 </thead>
                 <tbody>
                     {
-                        cartState.cart.map((a, i)=>
+                        cartState.cart.map((a, i) =>
                             <tr key={i}>
                                 <td>{cartState.cart[i].id}</td>
                                 <td>{cartState.cart[i].name}</td>
                                 <td>{cartState.cart[i].count}</td>
-                                <td>안녕</td>
+                                <td>
+                                    <button onClick={()=>{
+                                        dispatch(addStock())
+                                    }}>+</button>
+                                </td>
                             </tr>)
                     }
                 </tbody>
